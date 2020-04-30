@@ -248,7 +248,7 @@ HttpEngine.prototype.step = function step(requestSpec, ee, opts) {
           requestParams.json = template(requestParams.json, context);
           delete requestParams.body;
         } else if (requestParams.body) {
-          requestParams.body = template(requestParams.body, context);
+          requestParams.body = template(template(requestParams.body, context), context);
           // TODO: Warn if body is not a string or a buffer
         }
 
